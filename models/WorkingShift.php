@@ -12,7 +12,7 @@ use Yii;
  * @property string $start_date
  * @property string $end_date
  *
- * @property User $id0
+ * @property User $user
  */
 class WorkingShift extends \yii\db\ActiveRecord
 {
@@ -33,7 +33,7 @@ class WorkingShift extends \yii\db\ActiveRecord
             [['user_id', 'start_date', 'end_date'], 'required'],
             [['user_id'], 'integer'],
             [['start_date', 'end_date'], 'safe'],
-            [['id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id' => 'id']],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -51,12 +51,12 @@ class WorkingShift extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Id0]].
+     * Gets query for [[User]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getId0()
+    public function getUser()
     {
-        return $this->hasOne(User::class, ['id' => 'id']);
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 }

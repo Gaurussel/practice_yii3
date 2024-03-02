@@ -39,15 +39,43 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Главная', 'url' => ['/site/index']],
             Yii::$app->user->isGuest
-                ? ['label' => 'Login', 'url' => ['/site/login']]
+                ? ''
+                : '<li class="nav-item">'
+                . Html::beginForm(['/order/index'])
+                . Html::submitButton(
+                    'Заказы',
+                    ['class' => 'nav-link btn btn-link logout']
+                )
+                . Html::endForm()
+                . '</li>',
+            !Yii::$app->user->isGuest && Yii::$app->user->identity->role === 0
+                ? '<li class="nav-item">'
+                . Html::beginForm(['/user/index'])
+                . Html::submitButton(
+                    'Пользователи',
+                    ['class' => 'nav-link btn btn-link logout']
+                )
+                . Html::endForm()
+                . '</li>'
+                : '',
+            !Yii::$app->user->isGuest && Yii::$app->user->identity->role === 0
+                ? '<li class="nav-item">'
+                . Html::beginForm(['/working-shift/index'])
+                . Html::submitButton(
+                    'Смены',
+                    ['class' => 'nav-link btn btn-link logout']
+                )
+                . Html::endForm()
+                . '</li>'
+                : '',
+            Yii::$app->user->isGuest
+                ? ['label' => 'Войти', 'url' => ['/site/login']]
                 : '<li class="nav-item">'
                     . Html::beginForm(['/site/logout'])
                     . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->username . ')',
+                        'Выйти (' . Yii::$app->user->identity->username . ')',
                         ['class' => 'nav-link btn btn-link logout']
                     )
                     . Html::endForm()

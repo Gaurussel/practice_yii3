@@ -17,9 +17,9 @@ use Yii;
  * @property int $role
  * @property string $email
  *
- * @property WorkingShift $workingShift
+ * @property WorkingShift[] $workingShifts
  */
-class User extends \yii\db\ActiveRecord
+class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
     /**
      * {@inheritdoc}
@@ -27,6 +27,41 @@ class User extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'user';
+    }
+
+    public static function findIdentity($id)
+    {
+        return self::findOne($id);
+    }
+
+    public static function findByUsername($username)
+    {
+        return self::findOne(['username' => $username]);
+    }
+
+    public function validatePassword($password)
+    {
+        return $this->password === $password;
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return null;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getAuthKey()
+    {
+        return null;
+    }
+
+    public function validateAuthKey($authKey)
+    {
+        return null;
     }
 
     /**
@@ -61,12 +96,12 @@ class User extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[WorkingShift]].
+     * Gets query for [[WorkingShifts]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getWorkingShift()
+    public function getWorkingShifts()
     {
-        return $this->hasOne(WorkingShift::class, ['id' => 'id']);
+        return $this->hasMany(WorkingShift::class, ['user_id' => 'id']);
     }
 }

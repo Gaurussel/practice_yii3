@@ -9,7 +9,7 @@ use yii\grid\GridView;
 /** @var yii\web\View $this */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Orders';
+$this->title = 'Заказы';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="order-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Order', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Новый заказ', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
 
@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'cooker_id',
             //'drinks:ntext',
             //'foods:ntext',
-            //'status',
+            'status',
             //'created_at',
             //'updated_at',
             [

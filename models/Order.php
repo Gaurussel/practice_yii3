@@ -34,8 +34,8 @@ class Order extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['table_id', 'clients_count', 'waiter_id', 'cooker_id', 'drinks', 'foods', 'status', 'created_at', 'updated_at'], 'required'],
-            [['table_id', 'clients_count', 'waiter_id', 'cooker_id', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['table_id', 'clients_count', 'waiter_id', 'cooker_id', 'drinks', 'foods', 'status'], 'required'],
+            [['table_id', 'clients_count', 'waiter_id', 'cooker_id', 'status'], 'integer'],
             [['drinks', 'foods'], 'string'],
         ];
     }
@@ -47,13 +47,13 @@ class Order extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'table_id' => 'Table ID',
-            'clients_count' => 'Clients Count',
-            'waiter_id' => 'Waiter ID',
-            'cooker_id' => 'Cooker ID',
-            'drinks' => 'Drinks',
-            'foods' => 'Foods',
-            'status' => 'Status',
+            'table_id' => 'Номер столика',
+            'clients_count' => 'Количество гостей',
+            'waiter_id' => 'Официант',
+            'cooker_id' => 'Повар',
+            'drinks' => 'Напитки',
+            'foods' => 'Еда',
+            'status' => 'Статус',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
