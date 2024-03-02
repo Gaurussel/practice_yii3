@@ -5,23 +5,23 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "working_shifts".
+ * This is the model class for table "working_shift".
  *
  * @property int $id
  * @property int $user_id
  * @property string $start_date
  * @property string $end_date
  *
- * @property Users $id0
+ * @property User $id0
  */
-class WorkingShifts extends \yii\db\ActiveRecord
+class WorkingShift extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'working_shifts';
+        return 'working_shift';
     }
 
     /**
@@ -33,7 +33,7 @@ class WorkingShifts extends \yii\db\ActiveRecord
             [['user_id', 'start_date', 'end_date'], 'required'],
             [['user_id'], 'integer'],
             [['start_date', 'end_date'], 'safe'],
-            [['id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::class, 'targetAttribute' => ['id' => 'id']],
+            [['id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id' => 'id']],
         ];
     }
 
@@ -57,6 +57,6 @@ class WorkingShifts extends \yii\db\ActiveRecord
      */
     public function getId0()
     {
-        return $this->hasOne(Users::class, ['id' => 'id']);
+        return $this->hasOne(User::class, ['id' => 'id']);
     }
 }

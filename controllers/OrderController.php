@@ -2,16 +2,16 @@
 
 namespace app\controllers;
 
-use app\models\Orders;
+use app\models\Order;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * OrdersController implements the CRUD actions for Orders model.
+ * OrderController implements the CRUD actions for Order model.
  */
-class OrdersController extends Controller
+class OrderController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,14 +32,14 @@ class OrdersController extends Controller
     }
 
     /**
-     * Lists all Orders models.
+     * Lists all Order models.
      *
      * @return string
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Orders::find(),
+            'query' => Order::find(),
             /*
             'pagination' => [
                 'pageSize' => 50
@@ -58,7 +58,7 @@ class OrdersController extends Controller
     }
 
     /**
-     * Displays a single Orders model.
+     * Displays a single Order model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -71,13 +71,13 @@ class OrdersController extends Controller
     }
 
     /**
-     * Creates a new Orders model.
+     * Creates a new Order model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Orders();
+        $model = new Order();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -93,7 +93,7 @@ class OrdersController extends Controller
     }
 
     /**
-     * Updates an existing Orders model.
+     * Updates an existing Order model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -113,7 +113,7 @@ class OrdersController extends Controller
     }
 
     /**
-     * Deletes an existing Orders model.
+     * Deletes an existing Order model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -127,15 +127,15 @@ class OrdersController extends Controller
     }
 
     /**
-     * Finds the Orders model based on its primary key value.
+     * Finds the Order model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Orders the loaded model
+     * @return Order the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Orders::findOne(['id' => $id])) !== null) {
+        if (($model = Order::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

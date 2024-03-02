@@ -1,6 +1,6 @@
 <?php
 
-use app\models\WorkingShifts;
+use app\models\WorkingShift;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -12,12 +12,12 @@ use yii\grid\GridView;
 $this->title = 'Working Shifts';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="working-shifts-index">
+<div class="working-shift-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Working Shifts', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Working Shift', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
 
@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'end_date',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, WorkingShifts $model, $key, $index, $column) {
+                'urlCreator' => function ($action, WorkingShift $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],

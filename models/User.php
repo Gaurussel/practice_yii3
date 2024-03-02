@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "users".
+ * This is the model class for table "user".
  *
  * @property int $id
  * @property string $username
@@ -17,37 +17,16 @@ use Yii;
  * @property int $role
  * @property string $email
  *
- * @property WorkingShifts $workingShifts
+ * @property WorkingShift $workingShift
  */
-class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
+class User extends \yii\db\ActiveRecord
 {
-    public static function findIdentity($id)
-    {
-
-    }
-    public static function findIdentityByAccessToken($token, $type = null)
-    {
-
-    }
-    public function getId()
-    {
-        return $this->id;
-    }
-    public function getAuthKey()
-    {
-        return null;
-    }
-    public function validateAuthKey($authKey)
-    {
-
-    }
-
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'users';
+        return 'user';
     }
 
     /**
@@ -82,12 +61,12 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     }
 
     /**
-     * Gets query for [[WorkingShifts]].
+     * Gets query for [[WorkingShift]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getWorkingShifts()
+    public function getWorkingShift()
     {
-        return $this->hasOne(WorkingShifts::class, ['id' => 'id']);
+        return $this->hasOne(WorkingShift::class, ['id' => 'id']);
     }
 }

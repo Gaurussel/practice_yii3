@@ -2,16 +2,16 @@
 
 namespace app\controllers;
 
-use app\models\WorkingShifts;
+use app\models\WorkingShift;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * WorkingShiftsController implements the CRUD actions for WorkingShifts model.
+ * WorkingShiftController implements the CRUD actions for WorkingShift model.
  */
-class WorkingShiftsController extends Controller
+class WorkingShiftController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,14 +32,14 @@ class WorkingShiftsController extends Controller
     }
 
     /**
-     * Lists all WorkingShifts models.
+     * Lists all WorkingShift models.
      *
      * @return string
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => WorkingShifts::find(),
+            'query' => WorkingShift::find(),
             /*
             'pagination' => [
                 'pageSize' => 50
@@ -58,7 +58,7 @@ class WorkingShiftsController extends Controller
     }
 
     /**
-     * Displays a single WorkingShifts model.
+     * Displays a single WorkingShift model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -71,13 +71,13 @@ class WorkingShiftsController extends Controller
     }
 
     /**
-     * Creates a new WorkingShifts model.
+     * Creates a new WorkingShift model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new WorkingShifts();
+        $model = new WorkingShift();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -93,7 +93,7 @@ class WorkingShiftsController extends Controller
     }
 
     /**
-     * Updates an existing WorkingShifts model.
+     * Updates an existing WorkingShift model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -113,7 +113,7 @@ class WorkingShiftsController extends Controller
     }
 
     /**
-     * Deletes an existing WorkingShifts model.
+     * Deletes an existing WorkingShift model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -127,15 +127,15 @@ class WorkingShiftsController extends Controller
     }
 
     /**
-     * Finds the WorkingShifts model based on its primary key value.
+     * Finds the WorkingShift model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return WorkingShifts the loaded model
+     * @return WorkingShift the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = WorkingShifts::findOne(['id' => $id])) !== null) {
+        if (($model = WorkingShift::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

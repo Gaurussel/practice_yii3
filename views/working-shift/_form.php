@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
-/** @var app\models\WorkingShifts $model */
+/** @var app\models\WorkingShift $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
-<div class="working-shifts-form">
+<div class="working-shift-form">
 
     <?php $form = ActiveForm::begin(); ?>
 

@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var app\models\Orders $model */
+/** @var app\models\Order $model */
 
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Orders', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="orders-view">
+<div class="order-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

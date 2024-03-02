@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var app\models\WorkingShifts $model */
+/** @var app\models\WorkingShift $model */
 
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Working Shifts', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="working-shifts-view">
+<div class="working-shift-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

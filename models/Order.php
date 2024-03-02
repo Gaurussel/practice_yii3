@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "orders".
+ * This is the model class for table "order".
  *
  * @property int $id
  * @property int $table_id
@@ -18,14 +18,14 @@ use Yii;
  * @property int $created_at
  * @property int $updated_at
  */
-class Orders extends \yii\db\ActiveRecord
+class Order extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'orders';
+        return 'order';
     }
 
     /**
@@ -47,13 +47,13 @@ class Orders extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'table_id' => 'Номер столика',
-            'clients_count' => 'Количество гостей',
-            'waiter_id' => 'Официант',
-            'cooker_id' => 'Повар',
-            'drinks' => 'Напитки',
-            'foods' => 'Еда',
-            'status' => 'Статус',
+            'table_id' => 'Table ID',
+            'clients_count' => 'Clients Count',
+            'waiter_id' => 'Waiter ID',
+            'cooker_id' => 'Cooker ID',
+            'drinks' => 'Drinks',
+            'foods' => 'Foods',
+            'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
