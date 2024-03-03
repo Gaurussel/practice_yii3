@@ -20,11 +20,18 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'partonymic')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status')->dropDownList([
+        0 => 'В штате',
+        1 => 'Уволен'
+    ]) ?>
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'role')->textInput() ?>
+    <?= $form->field($model, 'role')->dropDownList([
+        0 => 'Администратор',
+        1 => 'Официант',
+        2 => 'Повар'
+    ]) ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 

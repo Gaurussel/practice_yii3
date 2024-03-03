@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Order;
+use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -39,7 +40,7 @@ class OrderController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Order::find(),
+            'query' => Order::find()->with('cooker', 'waiter'),
             /*
             'pagination' => [
                 'pageSize' => 50
@@ -66,7 +67,7 @@ class OrderController extends Controller
     public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => Order::find()->where(['id' => $id])->with('cooker', 'waiter')->one(),
         ]);
     }
 

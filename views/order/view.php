@@ -32,8 +32,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'table_id',
             'clients_count',
-            'waiter_id',
-            'cooker_id',
+            [
+                'label' => 'Официант',
+                'value' => $model->waiter->firstname . ' ' . $model->waiter->lastname
+            ],
+            [
+                'label' => 'Повар',
+                'value' => $model->cooker ? $model->cooker->firstname . ' ' . $model->cooker->lastname : 'Отсутствует'
+            ],
             'drinks:ntext',
             'foods:ntext',
             'status',

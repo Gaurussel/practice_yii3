@@ -11,6 +11,7 @@ use yii\grid\GridView;
 
 $this->title = 'Заказы';
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="order-index">
 
@@ -26,7 +27,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'table_id',
             'clients_count',
             'waiter_id',

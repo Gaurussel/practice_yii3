@@ -84,14 +84,14 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
-            'firstname' => 'Firstname',
-            'lastname' => 'Lastname',
-            'partonymic' => 'Partonymic',
-            'status' => 'Status',
-            'password' => 'Password',
-            'role' => 'Role',
-            'email' => 'Email',
+            'username' => 'Логин',
+            'firstname' => 'Имя',
+            'lastname' => 'Фамилия',
+            'partonymic' => 'Отчество',
+            'status' => 'Статус',
+            'password' => 'Пароль',
+            'role' => 'Роль',
+            'email' => 'Почта',
         ];
     }
 

@@ -58,4 +58,14 @@ class Order extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
         ];
     }
+
+    public function getCooker()
+    {
+        return $this->hasOne(User::class, ['id' => 'cooker_id']);
+    }
+
+    public function getWaiter()
+    {
+        return $this->hasOne(User::class, ['id' => 'waiter_id']);
+    }
 }
