@@ -9,6 +9,14 @@ use yii\widgets\DetailView;
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Orders', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+$status = [
+    0 => 'Принят',
+    1 => 'Готовится',
+    2 => 'Подано',
+    3 => 'Оплачено',
+];
+
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="order-view">
@@ -33,16 +41,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'table_id',
             'clients_count',
             [
-                'label' => 'Официант',
+                'attribute' => 'waiter_id',
                 'value' => $model->waiter->firstname . ' ' . $model->waiter->lastname
             ],
             [
-                'label' => 'Повар',
+                'attribute' => 'cooker_id',
                 'value' => $model->cooker ? $model->cooker->firstname . ' ' . $model->cooker->lastname : 'Отсутствует'
             ],
             'drinks:ntext',
             'foods:ntext',
-            'status',
+            [
+                'attribute' => 'status',
+                'value' => $status[$model->status]
+            ],
         ],
     ]) ?>
 

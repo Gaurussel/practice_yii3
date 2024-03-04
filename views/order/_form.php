@@ -11,16 +11,14 @@ $user = Yii::$app->user->identity;
 
 $items = [
     0 => 'Принят',
-    1 => 'Ожидает повара',
 ];
 
 if ($user->role === 2) {
-    $items[3] = 'Готовится';
-    $items[4] = 'Ожидает подачи';
+    $items[1] = 'Готовится';
     
-} else if ($user->role === 2) {
-    $items[5] = 'Подано';
-    $items[6] = 'Оплачено';
+} else if ($user->role === 1 && $model->status === 1) {
+    $items[2] = 'Подано';
+    $items[3] = 'Оплачено';
 }
 
 ?>
@@ -32,10 +30,6 @@ if ($user->role === 2) {
     <?= $form->field($model, 'table_id')->textInput() ?>
 
     <?= $form->field($model, 'clients_count')->textInput() ?>
-
-    <?= $form->field($model, 'waiter_id')->textInput() ?>
-
-    <?= $form->field($model, 'cooker_id')->textInput() ?>
 
     <?= $form->field($model, 'drinks')->textarea(['rows' => 6]) ?>
 

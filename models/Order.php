@@ -34,7 +34,7 @@ class Order extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['table_id', 'clients_count', 'waiter_id', 'cooker_id', 'drinks', 'foods', 'status'], 'required'],
+            [['table_id', 'clients_count', 'drinks', 'foods', 'status'], 'required'],
             [['table_id', 'clients_count', 'waiter_id', 'cooker_id', 'status'], 'integer'],
             [['drinks', 'foods'], 'string'],
         ];

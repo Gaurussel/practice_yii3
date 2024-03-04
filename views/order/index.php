@@ -12,14 +12,23 @@ use yii\grid\GridView;
 $this->title = 'Заказы';
 $this->params['breadcrumbs'][] = $this->title;
 
+$status = [
+    0 => 'Принят',
+    1 => 'Готовится',
+    2 => 'Подано',
+    3 => 'Оплачено',
+];
+
 ?>
 <div class="order-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Новый заказ', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <?php if (Yii::$app->user->identity->role != 2): ?>
+        <p>
+            <?= Html::a('Новый заказ', ['create'], ['class' => 'btn btn-success']) ?>
+        </p>
+    <?php endif; ?>
 
 
     <?= GridView::widget([
@@ -29,11 +38,26 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'table_id',
             'clients_count',
-            'waiter_id',
-            'cooker_id',
+            [
+                'attribute' => 'waiter_id',
+                'value' => function ($data) {
+                    return $data->waiter->firstname . ' ' . $data->waiter->lastname;
+                }
+            ],
+            [
+                'attribute' => 'cooker_id',
+                'value' => function ($data) {
+                    return $data->cooker ? $data->cooker->firstname . ' ' . $data->cooker->lastname : 'Отсутствует';
+                }
+            ],
             //'drinks:ntext',
             //'foods:ntext',
-            'status',
+            [
+                'attribute' => 'status',
+                'value' => function ($data) use($status) {
+                    return $status[$data->status];
+                }
+            ],
             //'created_at',
             //'updated_at',
             [
