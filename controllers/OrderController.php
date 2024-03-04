@@ -39,8 +39,18 @@ class OrderController extends Controller
      */
     public function actionIndex()
     {
+        $user = Yii::$app->user->identity;
+        $query = Order::find()->with('cooker', 'waiter');
+
+        if ($user->role === 1) {
+            $query->where(['waiter_id' => $user->id]);
+        } else if ($user->role === 2) {
+            $query->where(['cooker_id' => $user->id])
+            ->orWhere(['cooker_id' => null]);
+        }
+
         $dataProvider = new ActiveDataProvider([
-            'query' => Order::find()->with('cooker', 'waiter'),
+            'query' => $query,
             /*
             'pagination' => [
                 'pageSize' => 50
